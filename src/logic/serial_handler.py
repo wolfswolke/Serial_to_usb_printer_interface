@@ -4,9 +4,9 @@ import serial
 class serial_interface:
 
     def __init__(self):
-        self.baud = 115200
-        self.interface = "USB"
-        self.port = serial.Serial("COM8", baudrate=self.baud)
+        self.baud = 0
+        self.interface = ""
+        self.port = None
 
     def setup(self, baud, interface):
         self.baud = baud
@@ -14,7 +14,10 @@ class serial_interface:
         self.port = serial.Serial(interface, baudrate=self.baud)
 
     def receive(self):
-        return self.port.read(10)
+        return self.port.readline()
+
+    def close(self):
+        self.port.close()
 
 
 serial_handler = serial_interface()
