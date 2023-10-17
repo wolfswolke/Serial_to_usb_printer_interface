@@ -12,6 +12,7 @@ class Logger:
         self.my_logger = logging.getLogger('serial_to_usb_printer')
 
     def setup_logger(self):
+        self.my_logger.setLevel(logging.DEBUG)
         self.log(level="info", handler="logging_server_Event", message={"event": "Service Started"})
 
     def log(self, level, handler, message):
